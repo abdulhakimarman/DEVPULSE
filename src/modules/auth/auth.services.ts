@@ -1,5 +1,5 @@
 import { sql } from "../../db";
-import type { RUser } from "../../types";
+import type { RUser, User } from "../../types";
 import bcrypt from "bcrypt";
 
 class AuthService {
@@ -12,6 +12,18 @@ class AuthService {
       RETURNING id, name, email, role, created_at, updated_at
     `;
     return res[0];
+  }
+
+  async validateUser(email: string, password: string) {
+    const res = await sql`
+      SELECT * FROM users WHERE email = ${email}
+    `;
+    if (res.length === 0) {
+        return null;
+    }
+    const {password_hash, ...user } = res[0] as User;
+    const isValid = await bcrypt.compare(password, password_hash);
+    return isValid ? user : null;
   }
 }
 
