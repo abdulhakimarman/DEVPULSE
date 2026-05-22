@@ -8,7 +8,7 @@ export const signup = async (req: Request, res: Response) => {
   if (!user) {
     return sendResponse(res, { message: "Failed to create user" }, 400);
   }
-  sendResponse(res, { message: "User created successfully!", data: user }, 201);
+  sendResponse(res, { message: "User registered successfully", data: user }, 201);
 };
 export const login = async (req: Request, res: Response) => {
   const { email, password } = req.body;
@@ -29,7 +29,7 @@ export const login = async (req: Request, res: Response) => {
   };
   sendResponse(
     res,
-    { message: "User created successfully!", data: result },
+    { message: "Login successful", data: result },
     201,
   );
 };

@@ -1,6 +1,6 @@
 export const role = ["contributor", "maintainer"] as const;
 
-type Role = (typeof role)[number];
+export type Role = (typeof role)[number];
 
 export type User = {
   id: number;
