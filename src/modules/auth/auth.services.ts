@@ -19,11 +19,17 @@ class AuthService {
       SELECT * FROM users WHERE email = ${email}
     `;
     if (res.length === 0) {
-        return null;
+      return null;
     }
-    const {password_hash, ...user } = res[0] as User;
+    const { password_hash, ...user } = res[0] as User;
     const isValid = await bcrypt.compare(password, password_hash);
     return isValid ? user : null;
+  }
+  async getUserById(id: number) {
+    const res = await sql`
+      SELECT id, name, email, role FROM users WHERE id = ${id}
+    `;
+    return res[0] as RUser & { id: number };
   }
 }
 
