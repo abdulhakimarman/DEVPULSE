@@ -80,4 +80,4 @@ Follow these steps to run the project locally:
 ### 1. Clone the Repository
 ```bash
 git clone [https://github.com/abdulhakimarman/DEVPULSE](https://github.com/abdulhakimarman/DEVPULSE)
-cd devpulse
+cd DEVPULSE

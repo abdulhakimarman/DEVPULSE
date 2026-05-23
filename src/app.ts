@@ -19,7 +19,8 @@ app.get("/", (req: Request, res: Response) => {
   //   throw new Error("Server is down");
   res.send("Hello, World!");
 });
-app.use("/auth", authRoute);
-app.use("/issues", issueRoute);
+app.use("/api/auth", authRoute);
+app.use("/api/issues", issueRoute);
 app.use(globalErrorHandler);
+
 export default app;
