@@ -17,7 +17,10 @@ app.use(express.json());
 
 app.get("/", (req: Request, res: Response) => {
   //   throw new Error("Server is down");
-  res.send("Hello, World!");
+  res.status(200).json({
+    message: "Express Server",
+    author: "Next Level",
+  });
 });
 app.use("/api/auth", authRoute);
 app.use("/api/issues", issueRoute);
